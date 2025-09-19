@@ -36,8 +36,7 @@
     "build": "rollup -c",
     "build:demo": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "prepublishOnly": "npm run build"
+    "preview": "vite preview"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
