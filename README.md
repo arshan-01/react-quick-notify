@@ -115,16 +115,22 @@ function MyComponent() {
 Wrap your application with this provider to enable toast functionality.
 
 ```tsx
-<ToastProvider config={{ position: 'top-right', duration: 3000, maxToasts: 3 }}>
+<ToastProvider config={{ 
+  position: 'top-right', 
+  duration: 3000, 
+  maxToasts: 3, 
+  reverseOrder: true 
+}}>
   {/* Your app */}
 </ToastProvider>
 ```
 
 **Props:**
 - `config` (optional): Global configuration object
-  - `position`: Default position for all toasts
+  - `position`: Default position for all toasts (`'top-right'` | `'top-left'` | `'bottom-right'` | `'bottom-left'` | `'top-center'` | `'bottom-center'`)
   - `duration`: Default duration in milliseconds (0 = no auto-dismiss)
   - `maxToasts`: Maximum number of toasts to show at once
+  - `reverseOrder`: Whether new toasts appear first (`true`) or last (`false`)
 
 ### ToastContainer
 
@@ -228,7 +234,8 @@ function App() {
       config={{
         position: 'bottom-right',
         duration: 3000,
-        maxToasts: 3
+        maxToasts: 3,
+        reverseOrder: true  // New toasts appear first
       }}
     >
       <MyComponents />
@@ -290,6 +297,26 @@ const dismissSpecific = (toastId: string) => {
 // Top left
 <ToastContainer position="top-left" />
 ```
+
+### Toast Order
+
+Control the order in which toasts appear:
+
+```tsx
+// New toasts appear at the top (newest first)
+<ToastProvider config={{ reverseOrder: true }}>
+  <ToastContainer />
+</ToastProvider>
+
+// Old toasts stay at the top (newest last) - default behavior
+<ToastProvider config={{ reverseOrder: false }}>
+  <ToastContainer />
+</ToastProvider>
+```
+
+**Behavior:**
+- `reverseOrder: false` (default): Old toasts remain visible at the top, new toasts appear below them
+- `reverseOrder: true`: New toasts appear at the top, pushing older toasts down
 
 ## Migration from v0.0.3 and earlier
 
