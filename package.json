@@ -5,6 +5,15 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/toast.css": "./dist/toast.css",
+    "./toast.css": "./dist/toast.css"
+  },
   "files": [
     "dist",
     "README.md"
