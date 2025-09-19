@@ -4,7 +4,7 @@ import { ToastProvider, ToastContainer, useToast } from 'react-quick-notify'
 import './App.css'
 
 // Main Demo Component
-function ToastDemo() {
+function ToastDemo({ position, onPositionChange }) {
   const { toast, toasts } = useToast()
   const [copiedId, setCopiedId] = useState('')
   const [currentOrder, setCurrentOrder] = useState('reverse') // 'reverse' or 'normal'
@@ -85,6 +85,15 @@ function ToastDemo() {
     setTimeout(() => toast.error('🥉 Third toast (should be at bottom)'), 600)
   }
 
+  const handlePositionChange = (newPosition) => {
+    onPositionChange(newPosition)
+    toast.info(`Position changed to: ${newPosition.replace('-', ' ')}`, 3000)
+  }
+
+  const testPosition = () => {
+    toast.success(`Testing ${position.replace('-', ' ')} position! 🎯`)
+  }
+
   return (
     <div className="demo-container">
       <header className="demo-header">
@@ -143,6 +152,63 @@ function ToastDemo() {
               Promise Toast
             </button>
           </div>
+        </section>
+
+        <section className="demo-section">
+          <h2 className="section-title">Position Demo</h2>
+          <div className="position-grid">
+            <button 
+              onClick={() => handlePositionChange('top-left')} 
+              className={`btn btn-position-top-left ${position === 'top-left' ? 'btn-active' : ''}`}
+            >
+              <span className="btn-icon">↖️</span>
+              Top Left
+            </button>
+            <button 
+              onClick={() => handlePositionChange('top-center')} 
+              className={`btn btn-position-top-center ${position === 'top-center' ? 'btn-active' : ''}`}
+            >
+              <span className="btn-icon">⬆️</span>
+              Top Center
+            </button>
+            <button 
+              onClick={() => handlePositionChange('top-right')} 
+              className={`btn btn-position-top-right ${position === 'top-right' ? 'btn-active' : ''}`}
+            >
+              <span className="btn-icon">↗️</span>
+              Top Right
+            </button>
+            <button 
+              onClick={() => handlePositionChange('bottom-left')} 
+              className={`btn btn-position-bottom-left ${position === 'bottom-left' ? 'btn-active' : ''}`}
+            >
+              <span className="btn-icon">↙️</span>
+              Bottom Left
+            </button>
+            <button 
+              onClick={() => handlePositionChange('bottom-center')} 
+              className={`btn btn-position-bottom-center ${position === 'bottom-center' ? 'btn-active' : ''}`}
+            >
+              <span className="btn-icon">⬇️</span>
+              Bottom Center
+            </button>
+            <button 
+              onClick={() => handlePositionChange('bottom-right')} 
+              className={`btn btn-position-bottom-right ${position === 'bottom-right' ? 'btn-active' : ''}`}
+            >
+              <span className="btn-icon">↘️</span>
+              Bottom Right
+            </button>
+          </div>
+          <div className="position-test">
+            <button onClick={testPosition} className="btn btn-success">
+              <span className="btn-icon">🎯</span>
+              Test Current Position
+            </button>
+          </div>
+          <p className="demo-note">
+            Current position: <strong>{position.replace('-', ' ')}</strong>
+          </p>
         </section>
 
         <section className="demo-section">
@@ -486,16 +552,18 @@ toast.clear()`}</pre>
 
 // Main App Component
 function App() {
+  const [position, setPosition] = useState('top-right')
+
   return (
     <ToastProvider 
       config={{ 
-        position: 'top-right', 
+        position: position, 
         duration: 4000, 
         maxToasts: 0, // 0 = unlimited for demo
         reverseOrder: true 
       }}
     >
-      <ToastDemo />
+      <ToastDemo position={position} onPositionChange={setPosition} />
       <ToastContainer />
     </ToastProvider>
   )
