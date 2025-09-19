@@ -27,13 +27,15 @@ module.exports = [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.lib.json',
+        declaration: true,
+        declarationDir: 'dist/types',
         exclude: ['**/*.test.tsx', '**/*.test.ts', '**/*.stories.ts'],
       }),
     ],
     external: ['react', 'react-dom'],
   },
   {
-    input: 'dist/esm/types/lib/index.d.ts',
+    input: 'dist/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
     external: [/\.css$/],
