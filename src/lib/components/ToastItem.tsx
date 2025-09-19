@@ -35,76 +35,86 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast }) => {
     }, 300);
   };
 
-  const getToastStyles = () => {
+  const getToastTypeClass = () => {
     switch (toast.type) {
       case 'success':
-        return 'bg-green-100 border border-green-200';
+        return 'rqn-toast-item--success';
       case 'error':
-        return 'bg-red-100 border border-red-200';
+        return 'rqn-toast-item--error';
       case 'warning':
-        return 'bg-yellow-100 border border-yellow-200';
+        return 'rqn-toast-item--warning';
       case 'info':
-        return 'bg-blue-100 border border-blue-200';
+        return 'rqn-toast-item--info';
       default:
-        return 'bg-gray-100 border border-gray-200';
+        return 'rqn-toast-item--default';
     }
   };
 
   const getIcon = () => {
-    const baseIconClass = "h-5 w-5 flex-shrink-0";
-    const animationClass = iconAnimated 
-      ? "scale-100 opacity-100 rotate-0 animate-pulse" 
-      : "scale-0 opacity-0 -rotate-90";
-    const iconClass = `${baseIconClass} ${animationClass} transition-all duration-700 ease-out`;
+    const iconClass = `rqn-toast-icon ${
+      iconAnimated ? 'rqn-toast-icon--animated' : ''
+    }`;
     
     switch (toast.type) {
       case 'success':
-        return <CheckCircle className={`${iconClass} text-green-600`} />;
+        return <CheckCircle className={`${iconClass} rqn-toast-icon--success`} />;
       case 'error':
-        return <XCircle className={`${iconClass} text-red-600`} />;
+        return <XCircle className={`${iconClass} rqn-toast-icon--error`} />;
       case 'warning':
-        return <AlertTriangle className={`${iconClass} text-yellow-600`} />;
+        return <AlertTriangle className={`${iconClass} rqn-toast-icon--warning`} />;
       case 'info':
-        return <Info className={`${iconClass} text-blue-600`} />;
+        return <Info className={`${iconClass} rqn-toast-icon--info`} />;
       default:
-        return <Info className={`${iconClass} text-gray-600`} />;
+        return <Info className={`${iconClass} rqn-toast-icon--default`} />;
     }
   };
 
-  const getTextColor = () => {
+  const getMessageClass = () => {
     switch (toast.type) {
       case 'success':
-        return 'text-green-700';
+        return 'rqn-toast-message--success';
       case 'error':
-        return 'text-red-700';
+        return 'rqn-toast-message--error';
       case 'warning':
-        return 'text-yellow-700';
+        return 'rqn-toast-message--warning';
       case 'info':
-        return 'text-blue-700';
+        return 'rqn-toast-message--info';
       default:
-        return 'text-gray-700';
+        return 'rqn-toast-message--default';
+    }
+  };
+
+  const getCloseButtonClass = () => {
+    switch (toast.type) {
+      case 'success':
+        return 'rqn-toast-close--success';
+      case 'error':
+        return 'rqn-toast-close--error';
+      case 'warning':
+        return 'rqn-toast-close--warning';
+      case 'info':
+        return 'rqn-toast-close--info';
+      default:
+        return 'rqn-toast-close--default';
     }
   };
 
   return (
     <div
-      className={`
-        rounded-lg px-4 py-3 shadow-sm transition-all duration-300 ease-out transform max-w-md
-        ${getToastStyles()}
-        ${isVisible && !isLeaving ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-full opacity-0 scale-95'}
-        ${isLeaving ? 'translate-x-full opacity-0 scale-95' : ''}
-      `}
+      className={`rqn-toast-item ${getToastTypeClass()} ${
+        isVisible && !isLeaving ? 'rqn-toast-item--visible' : ''
+      } ${isLeaving ? 'rqn-toast-item--leaving' : ''}`}
     >
-      <div className="flex items-center gap-3">
+      <div className="rqn-toast-content">
         {getIcon()}
-        <p className={`text-sm font-medium ${getTextColor()} flex-1`}>
+        <p className={`rqn-toast-message ${getMessageClass()}`}>
           {toast.message}
         </p>
         <button
           onClick={handleDismiss}
-          className={`flex-shrink-0 p-1 rounded-md hover:bg-white/50 transition-colors ${getTextColor()}`}
+          className={`rqn-toast-close ${getCloseButtonClass()}`}
         >
-          <X className="h-4 w-4" />
+          <X className="rqn-toast-close-icon" />
         </button>
       </div>
     </div>

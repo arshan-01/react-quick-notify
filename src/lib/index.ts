@@ -8,3 +8,6 @@ export type { Toast, ToastType, ToastContextType, ToastConfig } from './types/to
 
 // Optional: Export individual components if users want more control
 export { ToastItem } from './components/ToastItem';
+
+// CSS import - Note: Users need to import the CSS file separately
+// import 'react-quick-notify/dist/toast.css';

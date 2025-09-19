@@ -29,12 +29,27 @@ pnpm add react-quick-notify
 
 This package requires:
 - React 16.8+ (hooks support)
-- Tailwind CSS (for styling)
 - lucide-react (for icons)
+
+**Note:** Tailwind CSS is no longer required! The package now includes its own CSS file.
 
 ## Quick Start
 
-1. **Wrap your app with ToastProvider:**
+1. **Import the CSS file** in your main application file:
+
+```css
+/* In your main CSS file */
+@import 'react-quick-notify/dist/toast.css';
+```
+
+Or in your JavaScript/TypeScript file:
+
+```tsx
+// In your App.tsx or main entry file
+import 'react-quick-notify/dist/toast.css';
+```
+
+2. **Wrap your app with ToastProvider:**
 
 ```tsx
 import React from 'react';
@@ -57,7 +72,7 @@ function App() {
 export default App;
 ```
 
-2. **Use the toast hook in your components:**
+3. **Use the toast hook in your components:**
 
 ```tsx
 import React from 'react';
@@ -153,23 +168,45 @@ const { toast, toasts } = useToast();
 
 ## Styling
 
-This package uses Tailwind CSS classes. Make sure you have Tailwind CSS installed and configured in your project.
+This package includes its own CSS file with all necessary styles. No external CSS framework is required!
 
-### Required Tailwind Classes
+### Built-in Styles
 
-The package uses these Tailwind classes that should be available:
-- Layout: `fixed`, `top-4`, `right-4`, `z-50`, `flex`, `items-center`, etc.
-- Colors: `bg-green-100`, `text-green-600`, `border-green-200`, etc.
-- Spacing: `p-4`, `px-4`, `py-3`, `gap-3`, `space-y-3`, etc.
-- Effects: `rounded-lg`, `shadow-sm`, `transition-all`, `duration-300`, etc.
+The package includes:
+- Responsive design that works on all screen sizes
+- Smooth animations and transitions
+- Dark mode support (automatically detects system preference)
+- Beautiful color schemes for different toast types
+- Accessible focus states and ARIA attributes
 
 ### Customization
 
 You can customize the appearance by:
 
-1. **Overriding Tailwind classes** in your CSS
-2. **Extending the components** by copying and modifying them
-3. **Using CSS custom properties** for colors
+1. **Overriding CSS classes** in your own stylesheet:
+```css
+/* Override toast colors */
+.rqn-toast-item--success {
+  background-color: #your-color;
+  border-color: #your-border-color;
+}
+
+/* Override toast positioning */
+.rqn-toast-container {
+  z-index: 9999; /* Custom z-index */
+}
+```
+
+2. **Using CSS custom properties** for global theming:
+```css
+:root {
+  --rqn-success-bg: #f0fdf4;
+  --rqn-success-border: #bbf7d0;
+  --rqn-success-text: #15803d;
+}
+```
+
+3. **Extending the components** by copying and modifying them
 
 ## TypeScript Support
 
@@ -253,6 +290,30 @@ const dismissSpecific = (toastId: string) => {
 // Top left
 <ToastContainer position="top-left" />
 ```
+
+## Migration from v0.0.3 and earlier
+
+If you're upgrading from an earlier version that required Tailwind CSS:
+
+1. **Remove Tailwind CSS dependencies** (if you're not using Tailwind elsewhere):
+```bash
+npm uninstall tailwindcss postcss autoprefixer
+```
+
+2. **Remove Tailwind imports** from your CSS:
+```css
+/* Remove these lines */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+3. **Add the new CSS import:**
+```tsx
+import 'react-quick-notify/dist/toast.css';
+```
+
+That's it! Your toasts will continue to work exactly the same way.
 
 ## Contributing
 

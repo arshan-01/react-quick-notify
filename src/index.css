@@ -1,3 +1,2 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Demo styles only - not included in the library package */
+@import './lib/toast.css';

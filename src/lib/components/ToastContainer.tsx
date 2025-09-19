@@ -18,45 +18,37 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
     return null;
   }
 
-  const getPositionClasses = () => {
+  const getPositionClass = () => {
     switch (finalPosition) {
       case 'top-left':
-        return 'top-4 left-4';
+        return 'rqn-toast-container--top-left';
       case 'top-center':
-        return 'top-4 left-1/2 transform -translate-x-1/2';
+        return 'rqn-toast-container--top-center';
       case 'top-right':
-        return 'top-4 right-4';
+        return 'rqn-toast-container--top-right';
       case 'bottom-left':
-        return 'bottom-4 left-4';
+        return 'rqn-toast-container--bottom-left';
       case 'bottom-center':
-        return 'bottom-4 left-1/2 transform -translate-x-1/2';
+        return 'rqn-toast-container--bottom-center';
       case 'bottom-right':
-        return 'bottom-4 right-4';
+        return 'rqn-toast-container--bottom-right';
       default:
-        return 'top-4 right-4';
+        return 'rqn-toast-container--top-right';
     }
   };
 
-  const getFlexDirection = () => {
-    return finalPosition.includes('bottom') ? 'flex-col-reverse' : 'flex-col';
-  };
-
-  const getItemsAlignment = () => {
-    if (finalPosition.includes('left')) return 'items-start';
-    if (finalPosition.includes('right')) return 'items-end';
-    return 'items-center';
+  const getContainerDirection = () => {
+    return finalPosition.includes('bottom') ? 'rqn-toast-container--reverse' : '';
   };
 
   return (
     <div
       aria-live="assertive"
-      className={`fixed z-50 pointer-events-none ${getPositionClasses()}`}
+      className={`rqn-toast-container ${getPositionClass()} ${getContainerDirection()}`}
     >
-      <div className={`flex ${getFlexDirection()} ${getItemsAlignment()} space-y-3 pointer-events-auto`}>
-        {toasts.map(toast => (
-          <ToastItem key={toast.id} toast={toast} />
-        ))}
-      </div>
+      {toasts.map(toast => (
+        <ToastItem key={toast.id} toast={toast} />
+      ))}
     </div>
   );
 };

@@ -20,12 +20,29 @@ pnpm add react-quick-notify
 Your package requires these peer dependencies (users need to have them installed):
 - `react` >= 16.8.0
 - `react-dom` >= 16.8.0
-- `tailwindcss` (for styling)
 - `lucide-react` (for icons)
+
+**Note:** Tailwind CSS is no longer required! The package now includes its own CSS file.
 
 ## Step-by-Step Setup
 
-### 1. Wrap App with ToastProvider
+### 1. Import CSS File
+
+Users need to import the CSS file in their main application file:
+
+```css
+/* In main CSS file */
+@import 'react-quick-notify/dist/toast.css';
+```
+
+Or in JavaScript/TypeScript:
+
+```tsx
+// In App.tsx or main entry file
+import 'react-quick-notify/dist/toast.css';
+```
+
+### 2. Wrap App with ToastProvider
 
 First, users need to wrap their entire app with the `ToastProvider`:
 
@@ -409,16 +426,16 @@ toast.custom('info', 'message'); // ✅
 ### Common Issues
 
 1. **Toasts not appearing**: Make sure `ToastContainer` is placed inside `ToastProvider`
-2. **Styling issues**: Ensure Tailwind CSS is properly configured
+2. **Styling issues**: Ensure the CSS file is properly imported: `import 'react-quick-notify/dist/toast.css'`
 3. **Icons not showing**: Install `lucide-react` dependency
 4. **TypeScript errors**: Make sure you're importing from the correct path
 
-### Required Tailwind Classes
+### CSS Classes
 
-Make sure these Tailwind classes are available in your project:
-- Layout: `fixed`, `top-4`, `right-4`, `z-50`, `flex`, `items-center`
-- Colors: `bg-green-100`, `text-green-600`, `border-green-200`
-- Spacing: `p-4`, `px-4`, `py-3`, `gap-3`, `space-y-3`
+The package includes all necessary CSS classes with the `rqn-` prefix:
+- Container: `.rqn-toast-container`, `.rqn-toast-container--top-right`
+- Items: `.rqn-toast-item`, `.rqn-toast-item--success`
+- Content: `.rqn-toast-message`, `.rqn-toast-icon`, `.rqn-toast-close`
 - Effects: `rounded-lg`, `shadow-sm`, `transition-all`, `duration-300`
 
 That's it! Your users will have a beautiful, fully-functional toast notification system in their React applications.
