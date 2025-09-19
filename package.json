@@ -42,7 +42,7 @@
     "type": "git",
     "url": "https://github.com/arshan-01/react-quick-notify.git"
   },
-  "homepage": "https://github.com/arshan-01/react-quick-notify#readme",
+  "homepage": "https://react-quick-notify.vercel.app",
   "bugs": {
     "url": "https://github.com/arshan-01/react-quick-notify/issues"
   },
