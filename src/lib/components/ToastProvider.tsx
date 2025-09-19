@@ -30,19 +30,27 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     ...config,
   };
 
+  // Extract config values for useCallback dependencies
+  const configDuration = defaultConfig.duration;
+  const configMaxToasts = defaultConfig.maxToasts;
+
+  const removeToast = useCallback((id: string) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+  }, []);
+
   const addToast = useCallback((toastData: Omit<Toast, 'id'>) => {
     const id = Math.random().toString(36).substr(2, 9);
     const newToast: Toast = {
       id,
-      duration: defaultConfig.duration,
       ...toastData,
+      duration: toastData.duration ?? configDuration, // Use provided duration or fall back to config
     };
 
     setToasts(prev => {
       const newToasts = [...prev, newToast];
       // Limit number of toasts if maxToasts is set
-      if (defaultConfig.maxToasts && newToasts.length > defaultConfig.maxToasts) {
-        return newToasts.slice(-defaultConfig.maxToasts);
+      if (configMaxToasts && newToasts.length > configMaxToasts) {
+        return newToasts.slice(-configMaxToasts);
       }
       return newToasts;
     });
@@ -53,11 +61,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
         removeToast(id);
       }, newToast.duration);
     }
-  }, [defaultConfig.duration, defaultConfig.maxToasts]);
-
-  const removeToast = useCallback((id: string) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-  }, []);
+  }, [configDuration, configMaxToasts, removeToast]);
 
   const clearAllToasts = useCallback(() => {
     setToasts([]);
