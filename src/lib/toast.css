@@ -227,21 +227,49 @@
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
-  .rqn-toast-container {
-    left: 1rem !important;
-    right: 1rem !important;
-    transform: none !important;
+  /* Left and right positioned containers */
+  .rqn-toast-container--top-left,
+  .rqn-toast-container--bottom-left {
+    left: 1rem;
+    right: auto;
   }
   
+  .rqn-toast-container--top-right,
+  .rqn-toast-container--bottom-right {
+    right: 1rem;
+    left: auto;
+  }
+  
+  /* Center positioned containers */
   .rqn-toast-container--top-center,
   .rqn-toast-container--bottom-center {
-    left: 1rem;
-    right: 1rem;
-    transform: none;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: fit-content;
+    max-width: calc(100vw - 2rem);
   }
   
   .rqn-toast-item {
-    max-width: none;
+    max-width: 50vw;
+    min-width: 280px;
+    width: fit-content;
+  }
+  
+  /* For very small screens (phones in portrait) */
+  @media (max-width: 480px) {
+    .rqn-toast-item {
+      max-width: 60vw;
+      min-width: 250px;
+    }
+  }
+  
+  /* For larger mobile screens */
+  @media (min-width: 481px) and (max-width: 640px) {
+    .rqn-toast-item {
+      max-width: 45vw;
+      min-width: 300px;
+    }
   }
 }
 
