@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/esm/types",
+    "declaration": true,
+    "declarationDir": "dist/esm/types",
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "isolatedModules": false
+  },
+  "include": ["src/lib"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.ts"
+  ]
+}
