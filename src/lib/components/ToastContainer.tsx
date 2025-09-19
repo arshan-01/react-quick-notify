@@ -38,15 +38,21 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
   };
 
   const getContainerDirection = () => {
+    // Only apply CSS reverse for bottom positioned containers (visual stacking from bottom)
     return finalPosition.includes('bottom') ? 'rqn-toast-container--reverse' : '';
   };
+
+  // Apply toast order based on reverseOrder configuration
+  // For top positions: reverseOrder=true means newest first (at top visually)
+  // For bottom positions: reverseOrder=true means newest first (but CSS reverse handles visual stacking)
+  const orderedToasts = config.reverseOrder ? [...toasts].reverse() : toasts;
 
   return (
     <div
       aria-live="assertive"
       className={`rqn-toast-container ${getPositionClass()} ${getContainerDirection()}`}
     >
-      {toasts.map(toast => (
+      {orderedToasts.map(toast => (
         <ToastItem key={toast.id} toast={toast} />
       ))}
     </div>

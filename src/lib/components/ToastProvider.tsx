@@ -26,6 +26,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     position: 'top-right',
     duration: 5000,
     maxToasts: 5,
+    reverseOrder: false, // default: old toasts first (new at bottom)
     ...config,
   };
 

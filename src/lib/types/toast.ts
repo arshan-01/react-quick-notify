@@ -4,6 +4,7 @@ export interface ToastConfig {
   position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
   duration?: number;
   maxToasts?: number;
+  reverseOrder?: boolean; // true = new toasts first, false = old toasts first
 }
 
 export interface Toast {

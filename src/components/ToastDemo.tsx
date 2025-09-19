@@ -19,9 +19,11 @@ import {
 interface ToastDemoProps {
   position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
   setPosition: (position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center') => void;
+  reverseOrder: boolean;
+  setReverseOrder: (reverseOrder: boolean) => void;
 }
 
-const ToastDemo: React.FC<ToastDemoProps> = ({ position, setPosition }) => {
+const ToastDemo: React.FC<ToastDemoProps> = ({ position, setPosition, reverseOrder, setReverseOrder }) => {
   const { toast } = useToast();
   const [customMessage, setCustomMessage] = useState('');
   const [duration, setDuration] = useState(5000);
@@ -240,6 +242,37 @@ function MyComponent() {
                   <option value="bottom-left">Bottom Left</option>
                   <option value="bottom-center">Bottom Center</option>
                 </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Toast Order
+                </label>
+                <div className="flex items-center space-x-4">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="toastOrder"
+                      checked={!reverseOrder}
+                      onChange={() => setReverseOrder(false)}
+                      className="mr-2 text-purple-600 focus:ring-purple-500"
+                    />
+                    <span className="text-sm text-gray-700">Old First (Default)</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="toastOrder"
+                      checked={reverseOrder}
+                      onChange={() => setReverseOrder(true)}
+                      className="mr-2 text-purple-600 focus:ring-purple-500"
+                    />
+                    <span className="text-sm text-gray-700">New First</span>
+                  </label>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  {reverseOrder ? 'Newest toasts appear at the top' : 'Oldest toasts appear at the top'}
+                </p>
               </div>
               <button
                 onClick={() => toast.info(`Toast positioned at: ${position}`, duration)}
