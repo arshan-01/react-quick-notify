@@ -19,15 +19,15 @@
     "components",
     "alerts"
   ],
-  "author": "Arshan <arshan@example.com>",
+  "author": "Arshan Nawaz",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arshan/react-toast-notifications.git"
+    "url": "https://github.com/arshan-01/react-quick-notify.git"
   },
-  "homepage": "https://github.com/arshan/react-toast-notifications#readme",
+  "homepage": "https://github.com/arshan-01/react-quick-notify#readme",
   "bugs": {
-    "url": "https://github.com/arshan/react-toast-notifications/issues"
+    "url": "https://github.com/arshan-01/react-quick-notify/issues"
   },
   "private": false,
   "type": "module",

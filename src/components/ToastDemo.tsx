@@ -384,8 +384,8 @@ function MyComponent() {
             <div>
               <h4 className="text-lg font-medium mb-3 text-gray-200">Basic Usage</h4>
               <div className="relative">
-                <div className="bg-gray-800 rounded-lg p-4 overflow-x-auto">
-                  <pre className="text-sm text-gray-300">
+          <div className="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+            <pre className="text-sm text-gray-300">
                     <code>{`import { useToast } from 'react-quick-notify';
 
 const MyComponent = () => {
@@ -408,7 +408,7 @@ const MyComponent = () => {
     </div>
   );
 };`}</code>
-                  </pre>
+            </pre>
                 </div>
                 <button
                   onClick={() => copyToClipboard(`import { useToast } from 'react-quick-notify';
