@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useToast } from '../hooks/useToast';
+import { useToast } from '../lib/hooks/useToast';
 import { 
   CheckCircle, 
   XCircle, 
@@ -16,10 +16,14 @@ import {
   Code
 } from 'lucide-react';
 
-const ToastDemo: React.FC = () => {
+interface ToastDemoProps {
+  position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
+  setPosition: (position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center') => void;
+}
+
+const ToastDemo: React.FC<ToastDemoProps> = ({ position, setPosition }) => {
   const { toast } = useToast();
   const [customMessage, setCustomMessage] = useState('');
-  const [position, setPosition] = useState<'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center'>('top-right');
   const [duration, setDuration] = useState(5000);
   const [copiedCode, setCopiedCode] = useState('');
 
