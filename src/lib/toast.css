@@ -50,8 +50,8 @@
 
 /* Base toast item styles */
 .rqn-toast-item {
-  border-radius: 0.5rem; /* rounded-lg */
-  padding: 0.75rem 1rem; /* px-4 py-3 */
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.625rem 0.75rem; /* px-3 py-2.5 - slightly more vertical padding */
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all duration-300 ease-out */
   transform: translateX(100%) scale(0.95);
@@ -102,8 +102,11 @@
 /* Toast content layout */
 .rqn-toast-content {
   display: flex;
-  align-items: center;
-  gap: 0.75rem; /* gap-3 */
+  align-items: flex-start; /* align to top for better text alignment */
+  gap: 0.5rem; /* gap-2 */
+  justify-content: space-between; /* ensure consistent spacing */
+  width: 100%;
+  min-width: 0; /* allow content to shrink */
 }
 
 /* Toast message text */
@@ -111,7 +114,15 @@
   font-size: 0.875rem; /* text-sm */
   font-weight: 500; /* font-medium */
   flex: 1; /* flex-1 */
-  line-height: 1.25rem;
+  line-height: 1.25rem; /* improved line height for better readability */
+  text-align: left; /* ensure text starts from left */
+  word-break: break-all; /* break long words to fill lines completely */
+  overflow-wrap: anywhere; /* wrap anywhere to fill lines */
+  white-space: pre-wrap; /* preserve whitespace and wrap */
+  hyphens: auto; /* add hyphenation for better line completion */
+  margin: 0; /* remove default paragraph margins */
+  padding-top: 0.125rem; /* slight top padding to align with icon */
+  min-width: 0; /* allow flex item to shrink below content size */
 }
 
 /* Text colors for different toast types */
@@ -137,12 +148,13 @@
 
 /* Toast icons */
 .rqn-toast-icon {
-  height: 1.25rem; /* h-5 */
-  width: 1.25rem; /* w-5 */
+  height: 1rem; /* h-4 */
+  width: 1rem; /* w-4 */
   flex-shrink: 0;
   transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all duration-700 ease-out */
   transform: scale(0) rotate(-90deg);
   opacity: 0;
+  margin-top: 0.125rem; /* align with text top padding */
 }
 
 .rqn-toast-icon--animated {
@@ -175,15 +187,17 @@
 /* Close button */
 .rqn-toast-close {
   flex-shrink: 0;
-  padding: 0.25rem; /* p-1 */
-  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.125rem; /* p-0.5 */
+  border-radius: 0.25rem; /* rounded */
   transition: background-color 0.15s ease-in-out;
   background: transparent;
   border: none;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* align to top like content */
   justify-content: center;
+  margin-top: 0.125rem; /* align with text top padding */
+  margin-left: 0.5rem; /* consistent spacing from content */
 }
 
 .rqn-toast-close:hover {
@@ -211,8 +225,8 @@
 }
 
 .rqn-toast-close-icon {
-  height: 1rem; /* h-4 */
-  width: 1rem; /* w-4 */
+  height: 0.875rem; /* h-3.5 */
+  width: 0.875rem; /* w-3.5 */
 }
 
 /* Animations */
@@ -230,13 +244,13 @@
   /* Left and right positioned containers */
   .rqn-toast-container--top-left,
   .rqn-toast-container--bottom-left {
-    left: 1rem;
+    left: 0.5rem;
     right: auto;
   }
   
   .rqn-toast-container--top-right,
   .rqn-toast-container--bottom-right {
-    right: 1rem;
+    right: 0.5rem;
     left: auto;
   }
   
@@ -247,28 +261,47 @@
     right: auto;
     transform: translateX(-50%);
     width: fit-content;
-    max-width: calc(100vw - 2rem);
+    max-width: calc(100vw - 1rem);
   }
   
   .rqn-toast-item {
-    max-width: 50vw;
-    min-width: 280px;
-    width: fit-content;
+    max-width: calc(100vw - 1rem);
+    min-width: 200px;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   /* For very small screens (phones in portrait) */
   @media (max-width: 480px) {
+    .rqn-toast-container--top-left,
+    .rqn-toast-container--bottom-left,
+    .rqn-toast-container--top-right,
+    .rqn-toast-container--bottom-right {
+      left: 0.25rem;
+      right: 0.25rem;
+      width: calc(100vw - 0.5rem);
+    }
+    
+    .rqn-toast-container--top-center,
+    .rqn-toast-container--bottom-center {
+      left: 0.25rem;
+      right: 0.25rem;
+      transform: none;
+      width: calc(100vw - 0.5rem);
+    }
+    
     .rqn-toast-item {
-      max-width: 60vw;
-      min-width: 250px;
+      max-width: calc(100vw - 0.5rem);
+      min-width: auto;
+      width: 100%;
     }
   }
   
   /* For larger mobile screens */
   @media (min-width: 481px) and (max-width: 640px) {
     .rqn-toast-item {
-      max-width: 45vw;
-      min-width: 300px;
+      max-width: calc(100vw - 1rem);
+      min-width: 250px;
     }
   }
 }
