@@ -36,7 +36,9 @@
     "alerts",
     "css"
   ],
-  "author": "Arshan Nawaz",
+  "author": {
+    "name": "Arshan Nawaz"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
