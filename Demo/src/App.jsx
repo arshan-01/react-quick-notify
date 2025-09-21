@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { ToastProvider, ToastContainer, useToast } from 'react-quick-notify'
-// import { ToastProvider, ToastContainer, useToast } from './ToastDemo' // Uncomment for local development
+// import { ToastProvider, ToastContainer, useToast } from 'react-quick-notify' // Local development
+import { ToastProvider, ToastContainer, useToast } from 'react-quick-notify' // NPM package
 import './App.css'
 
 // Main Demo Component
@@ -157,43 +157,43 @@ function ToastDemo({ position, onPositionChange }) {
         <section className="demo-section">
           <h2 className="section-title">Position Demo</h2>
           <div className="position-grid">
-            <button 
-              onClick={() => handlePositionChange('top-left')} 
+            <button
+              onClick={() => handlePositionChange('top-left')}
               className={`btn btn-position-top-left ${position === 'top-left' ? 'btn-active' : ''}`}
             >
               <span className="btn-icon">↖️</span>
               Top Left
             </button>
-            <button 
-              onClick={() => handlePositionChange('top-center')} 
+            <button
+              onClick={() => handlePositionChange('top-center')}
               className={`btn btn-position-top-center ${position === 'top-center' ? 'btn-active' : ''}`}
             >
               <span className="btn-icon">⬆️</span>
               Top Center
             </button>
-            <button 
-              onClick={() => handlePositionChange('top-right')} 
+            <button
+              onClick={() => handlePositionChange('top-right')}
               className={`btn btn-position-top-right ${position === 'top-right' ? 'btn-active' : ''}`}
             >
               <span className="btn-icon">↗️</span>
               Top Right
             </button>
-            <button 
-              onClick={() => handlePositionChange('bottom-left')} 
+            <button
+              onClick={() => handlePositionChange('bottom-left')}
               className={`btn btn-position-bottom-left ${position === 'bottom-left' ? 'btn-active' : ''}`}
             >
               <span className="btn-icon">↙️</span>
               Bottom Left
             </button>
-            <button 
-              onClick={() => handlePositionChange('bottom-center')} 
+            <button
+              onClick={() => handlePositionChange('bottom-center')}
               className={`btn btn-position-bottom-center ${position === 'bottom-center' ? 'btn-active' : ''}`}
             >
               <span className="btn-icon">⬇️</span>
               Bottom Center
             </button>
-            <button 
-              onClick={() => handlePositionChange('bottom-right')} 
+            <button
+              onClick={() => handlePositionChange('bottom-right')}
               className={`btn btn-position-bottom-right ${position === 'bottom-right' ? 'btn-active' : ''}`}
             >
               <span className="btn-icon">↘️</span>
@@ -289,7 +289,7 @@ function ToastDemo({ position, onPositionChange }) {
             <div className="code-block">
               <div className="code-header">
                 <span className="code-title">Install via npm</span>
-                <button 
+                <button
                   className={`copy-btn ${copiedId === 'npm-install' ? 'copied' : ''}`}
                   onClick={() => copyToClipboard('npm install react-quick-notify', 'npm-install', 'NPM command')}
                 >
@@ -298,11 +298,11 @@ function ToastDemo({ position, onPositionChange }) {
               </div>
               <code className="code-content">npm install react-quick-notify</code>
             </div>
-            
+
             <div className="code-block">
               <div className="code-header">
                 <span className="code-title">Or with yarn</span>
-                <button 
+                <button
                   className={`copy-btn ${copiedId === 'yarn-install' ? 'copied' : ''}`}
                   onClick={() => copyToClipboard('yarn add react-quick-notify', 'yarn-install', 'Yarn command')}
                 >
@@ -311,11 +311,11 @@ function ToastDemo({ position, onPositionChange }) {
               </div>
               <code className="code-content">yarn add react-quick-notify</code>
             </div>
-            
+
             <div className="code-block">
               <div className="code-header">
                 <span className="code-title">Or with pnpm</span>
-                <button 
+                <button
                   className={`copy-btn ${copiedId === 'pnpm-install' ? 'copied' : ''}`}
                   onClick={() => copyToClipboard('pnpm add react-quick-notify', 'pnpm-install', 'PNPM command')}
                 >
@@ -337,7 +337,7 @@ function ToastDemo({ position, onPositionChange }) {
                 <div className="code-block">
                   <div className="code-header">
                     <span className="code-title">In your main.jsx or App.jsx</span>
-                    <button 
+                    <button
                       className={`copy-btn ${copiedId === 'css-import' ? 'copied' : ''}`}
                       onClick={() => copyToClipboard("import 'react-quick-notify/dist/toast.css'", 'css-import', 'CSS import')}
                     >
@@ -356,7 +356,7 @@ function ToastDemo({ position, onPositionChange }) {
                 <div className="code-block">
                   <div className="code-header">
                     <span className="code-title">Wrap your app</span>
-                    <button 
+                    <button
                       className={`copy-btn ${copiedId === 'provider-setup' ? 'copied' : ''}`}
                       onClick={() => copyToClipboard(`import { ToastProvider, ToastContainer } from 'react-quick-notify'
 
@@ -396,7 +396,7 @@ function App() {
                 <div className="code-block">
                   <div className="code-header">
                     <span className="code-title">Component usage</span>
-                    <button 
+                    <button
                       className={`copy-btn ${copiedId === 'component-usage' ? 'copied' : ''}`}
                       onClick={() => copyToClipboard(`import { useToast } from 'react-quick-notify'
 
@@ -452,7 +452,7 @@ function MyComponent() {
               <div className="code-block">
                 <div className="code-header">
                   <span className="code-title">Available methods</span>
-                  <button 
+                  <button
                     className={`copy-btn ${copiedId === 'toast-methods' ? 'copied' : ''}`}
                     onClick={() => copyToClipboard(`const { toast } = useToast()
 
@@ -498,13 +498,12 @@ toast.clear()`}</pre>
               <div className="code-block">
                 <div className="code-header">
                   <span className="code-title">Provider config</span>
-                  <button 
+                  <button
                     className={`copy-btn ${copiedId === 'config-options' ? 'copied' : ''}`}
                     onClick={() => copyToClipboard(`<ToastProvider config={{
   position: 'top-right',     // 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center'
   duration: 4000,            // Auto-dismiss duration in ms (0 = no auto-dismiss)
-  maxToasts: 0,              // Maximum number of toasts (0 = unlimited)
-  reverseOrder: true         // New toasts appear first
+ reverseOrder: true         // New toasts appear first
 }}>`, 'config-options', 'Configuration options')}
                   >
                     {copiedId === 'config-options' ? '✅ Copied!' : '📋 Copy'}
@@ -536,11 +535,11 @@ toast.clear()`}</pre>
 
       <footer className="demo-footer">
         <p>
-          Built with ❤️ using React Quick Notify | 
+          Built with ❤️ using React Quick Notify |
           <a href="https://github.com/arshan-01/react-quick-notify" target="_blank" rel="noopener noreferrer">
             View on GitHub
           </a>
-          | 
+          |
           <a href="https://www.npmjs.com/package/react-quick-notify" target="_blank" rel="noopener noreferrer">
             NPM Package
           </a>
@@ -555,12 +554,12 @@ function App() {
   const [position, setPosition] = useState('top-right')
 
   return (
-    <ToastProvider 
-      config={{ 
-        position: position, 
-        duration: 4000, 
+    <ToastProvider
+      config={{
+        position: position,
+        duration: 10000,
         maxToasts: 0, // 0 = unlimited for demo
-        reverseOrder: true 
+        reverseOrder: true
       }}
     >
       <ToastDemo position={position} onPositionChange={setPosition} />

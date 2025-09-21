@@ -8,7 +8,7 @@ This demo can be configured to use either the local development version of `reac
 
 ### 📦 Current Configuration
 
-**Currently configured for:** Production Development
+**Currently configured for:** Production (NPM Package)
 
 ### 🛠️ Local Development Mode
 
