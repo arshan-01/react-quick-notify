@@ -274,28 +274,43 @@
   /* For very small screens (phones in portrait) */
   @media (max-width: 480px) {
     .rqn-toast-container--top-left,
+    .rqn-toast-container--top-right,
+    .rqn-toast-container--top-center {
+      top: 1rem; /* Reduced top margin for mobile */
+    }
+    
+    .rqn-toast-container--bottom-left,
+    .rqn-toast-container--bottom-right,
+    .rqn-toast-container--bottom-center {
+      bottom: 1rem; /* Reduced bottom margin for mobile */
+    }
+    
+    .rqn-toast-container--top-left,
     .rqn-toast-container--bottom-left {
-      left: 0.25rem;
-      right: auto;
+      left: 0.5rem;
+      right: 0.5rem; /* Ensure it doesn't extend beyond screen */
     }
     
     .rqn-toast-container--top-right,
     .rqn-toast-container--bottom-right {
-      right: 0.25rem;
-      left: auto;
+      right: 0.5rem;
+      left: 0.5rem; /* Ensure it doesn't extend beyond screen */
     }
     
     .rqn-toast-container--top-center,
     .rqn-toast-container--bottom-center {
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%);
+      left: 0.5rem;
+      right: 0.5rem;
+      transform: none; /* Remove transform to prevent overflow */
     }
     
     .rqn-toast-item {
-      max-width: calc(85vw - 0.5rem);
+      max-width: 100%;
       min-width: auto;
-      width: 85%;
+      width: 100%;
+      font-size: 0.8rem; /* Slightly smaller text on mobile */
+      padding: 0.5rem 0.625rem; /* Adjust padding for mobile */
+      box-sizing: border-box; /* Ensure padding is included in width */
     }
   }
   
