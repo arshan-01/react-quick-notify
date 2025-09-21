@@ -25,7 +25,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   const defaultConfig: ToastConfig = {
     position: 'top-right',
     duration: 5000,
-    maxToasts: 5,
+    maxToasts: 0, // 0 = unlimited toasts
     reverseOrder: false, // default: old toasts first (new at bottom)
     ...config,
   };
@@ -48,8 +48,8 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 
     setToasts(prev => {
       const newToasts = [...prev, newToast];
-      // Limit number of toasts if maxToasts is set
-      if (configMaxToasts && newToasts.length > configMaxToasts) {
+      // Limit number of toasts if maxToasts is set and greater than 0
+      if (configMaxToasts && configMaxToasts > 0 && newToasts.length > configMaxToasts) {
         return newToasts.slice(-configMaxToasts);
       }
       return newToasts;

@@ -58,7 +58,7 @@ function App() {
       config={{
         position: 'top-right',
         duration: 5000,
-        maxToasts: 5
+        maxToasts: 0  // 0 = unlimited toasts
       }}
     >
       <div className="App">
@@ -240,7 +240,7 @@ Set default properties for all toasts in your app:
   config={{
     position: 'bottom-right',    // Default position for all toasts
     duration: 3000,              // Default duration (3 seconds)
-    maxToasts: 3                 // Maximum 3 toasts at once
+    maxToasts: 0                 // 0 = unlimited toasts
   }}
 >
   <App />

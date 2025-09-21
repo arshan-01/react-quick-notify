@@ -56,7 +56,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all duration-300 ease-out */
   transform: translateX(100%) scale(0.95);
   opacity: 0;
-  max-width: 22rem; /* slightly more reduced width for large screens */
+  max-width: 20rem; /* match button width from demo interface */
   pointer-events: auto;
   border-width: 1px;
   border-style: solid;
@@ -116,8 +116,8 @@
   flex: 1; /* flex-1 */
   line-height: 1.25rem; /* improved line height for better readability */
   text-align: left; /* ensure text starts from left */
-  word-break: break-all; /* break long words to fill lines completely */
-  overflow-wrap: anywhere; /* wrap anywhere to fill lines */
+  word-break: break-word; /* break long words but prefer word boundaries */
+  overflow-wrap: break-word; /* wrap at word boundaries when possible */
   white-space: pre-wrap; /* preserve whitespace and wrap */
   hyphens: auto; /* add hyphenation for better line completion */
   margin: 0; /* remove default paragraph margins */
@@ -240,18 +240,23 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 640px) {
-  /* Left and right positioned containers */
-  .rqn-toast-container--top-left,
-  .rqn-toast-container--bottom-left {
-    left: 0.5rem;
-    right: auto;
+@media (max-width: 768px) {
+  .rqn-toast-item {
+    max-width: 18rem; /* Match button width for tablets */
   }
-  
+}
+
+@media (max-width: 640px) {
+  /* Center all containers on mobile for better UX */
+  .rqn-toast-container--top-left,
+  .rqn-toast-container--bottom-left,
   .rqn-toast-container--top-right,
   .rqn-toast-container--bottom-right {
-    right: 0.5rem;
-    left: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: fit-content;
+    max-width: calc(100vw - 1rem);
   }
   
   /* Center positioned containers */
@@ -265,9 +270,9 @@
   }
   
   .rqn-toast-item {
-    max-width: calc(90vw - 1rem);
+    max-width: calc(88vw - 2rem);
     min-width: 200px;
-    width: 90%;
+    width: calc(88vw - 2rem);
     box-sizing: border-box;
   }
   
@@ -286,30 +291,27 @@
     }
     
     .rqn-toast-container--top-left,
-    .rqn-toast-container--bottom-left {
-      left: 0.5rem;
-      right: 0.5rem; /* Ensure it doesn't extend beyond screen */
-    }
-    
+    .rqn-toast-container--bottom-left,
     .rqn-toast-container--top-right,
     .rqn-toast-container--bottom-right {
-      right: 0.5rem;
-      left: 0.5rem; /* Ensure it doesn't extend beyond screen */
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
     }
     
     .rqn-toast-container--top-center,
     .rqn-toast-container--bottom-center {
-      left: 0.5rem;
-      right: 0.5rem;
-      transform: none; /* Remove transform to prevent overflow */
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
     }
     
     .rqn-toast-item {
-      max-width: 100%;
+      max-width: calc(88vw - 1rem);
       min-width: auto;
-      width: 100%;
-      font-size: 0.8rem; /* Slightly smaller text on mobile */
-      padding: 0.5rem 0.625rem; /* Adjust padding for mobile */
+      width: calc(88vw - 1rem);
+      font-size: 0.8rem; /* Readable text on mobile */
+      padding: 0.5rem 0.625rem; /* Comfortable padding for mobile */
       box-sizing: border-box; /* Ensure padding is included in width */
     }
   }
@@ -317,8 +319,9 @@
   /* For larger mobile screens */
   @media (min-width: 481px) and (max-width: 640px) {
     .rqn-toast-item {
-      max-width: calc(85vw - 1rem);
+      max-width: calc(88vw - 2rem);
       min-width: 250px;
+      width: calc(88vw - 2rem);
     }
   }
 }

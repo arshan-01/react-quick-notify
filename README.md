@@ -118,7 +118,7 @@ Wrap your application with this provider to enable toast functionality.
 <ToastProvider config={{ 
   position: 'top-right', 
   duration: 3000, 
-  maxToasts: 3, 
+  maxToasts: 0,  // 0 = unlimited toasts
   reverseOrder: true 
 }}>
   {/* Your app */}
@@ -129,7 +129,7 @@ Wrap your application with this provider to enable toast functionality.
 - `config` (optional): Global configuration object
   - `position`: Default position for all toasts (`'top-right'` | `'top-left'` | `'bottom-right'` | `'bottom-left'` | `'top-center'` | `'bottom-center'`)
   - `duration`: Default duration in milliseconds (0 = no auto-dismiss)
-  - `maxToasts`: Maximum number of toasts to show at once
+  - `maxToasts`: Maximum number of toasts to show at once (0 = unlimited)
   - `reverseOrder`: Whether new toasts appear first (`true`) or last (`false`)
 
 ### ToastContainer
