@@ -4,7 +4,7 @@ export { useToast } from './hooks/useToast';
 export { ToastContainer } from './components/ToastContainer';
 
 // Type exports
-export type { Toast, ToastType, ToastContextType, ToastConfig } from './types/toast';
+export type { Toast, ToastType, ToastContextType, ToastConfig, PromiseToastMessages } from './types/toast';
 
 // Optional: Export individual components if users want more control
 export { ToastItem } from './components/ToastItem';

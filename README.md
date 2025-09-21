@@ -163,6 +163,7 @@ const { toast, toasts } = useToast();
 - `toast.warning(message, duration?)`: Show warning toast
 - `toast.info(message, duration?)`: Show info toast
 - `toast.custom(type, message, duration?)`: Show custom toast
+- `toast.promise(promise, messages, duration?)`: Show promise toast with loading/success/error states
 - `toast.dismiss(id)`: Dismiss specific toast
 - `toast.clear()`: Clear all toasts
 
@@ -171,6 +172,8 @@ const { toast, toasts } = useToast();
 - `duration` (number, optional): Auto-dismiss duration in milliseconds (default: 5000)
 - `type` (ToastType): Toast type for custom toasts
 - `id` (string): Toast ID for dismissing specific toasts
+- `promise` (Promise): The promise to track
+- `messages` (PromiseToastMessages): Object with loading, success, and error messages
 
 ## Styling
 
@@ -219,7 +222,7 @@ You can customize the appearance by:
 Full TypeScript support with exported types:
 
 ```tsx
-import { Toast, ToastType, ToastContextType } from 'react-quick-notify';
+import { Toast, ToastType, ToastContextType, PromiseToastMessages } from 'react-quick-notify';
 ```
 
 ## Examples
@@ -264,6 +267,30 @@ toast.success('Long message', 10000);
 
 // Toast that doesn't auto-dismiss
 toast.error('Persistent error', 0);
+```
+
+### Promise Toast
+
+Track async operations with automatic loading, success, and error states:
+
+```tsx
+const handleAsyncOperation = async () => {
+  const promise = fetch('/api/data')
+    .then(response => response.json());
+
+  toast.promise(promise, {
+    loading: 'Loading data...',
+    success: 'Data loaded successfully!',
+    error: 'Failed to load data'
+  });
+};
+
+// With custom duration for success/error states
+toast.promise(promise, {
+  loading: 'Processing...',
+  success: 'Operation completed!',
+  error: 'Operation failed'
+}, 3000); // Success/error toasts will auto-dismiss after 3 seconds
 ```
 
 ### Managing Toasts

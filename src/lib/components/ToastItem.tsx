@@ -4,7 +4,8 @@ import {
   XCircle, 
   AlertTriangle, 
   Info, 
-  X 
+  X,
+  Loader2
 } from 'lucide-react';
 import { Toast } from '../types/toast';
 import { useToastContext } from './ToastProvider';
@@ -45,6 +46,8 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast }) => {
         return 'rqn-toast-item--warning';
       case 'info':
         return 'rqn-toast-item--info';
+      case 'loading':
+        return 'rqn-toast-item--loading';
       default:
         return 'rqn-toast-item--default';
     }
@@ -64,6 +67,8 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast }) => {
         return <AlertTriangle className={`${iconClass} rqn-toast-icon--warning`} />;
       case 'info':
         return <Info className={`${iconClass} rqn-toast-icon--info`} />;
+      case 'loading':
+        return <Loader2 className={`${iconClass} rqn-toast-icon--loading rqn-toast-icon--spinning`} />;
       default:
         return <Info className={`${iconClass} rqn-toast-icon--default`} />;
     }
@@ -79,6 +84,8 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast }) => {
         return 'rqn-toast-message--warning';
       case 'info':
         return 'rqn-toast-message--info';
+      case 'loading':
+        return 'rqn-toast-message--loading';
       default:
         return 'rqn-toast-message--default';
     }
@@ -94,6 +101,8 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast }) => {
         return 'rqn-toast-close--warning';
       case 'info':
         return 'rqn-toast-close--info';
+      case 'loading':
+        return 'rqn-toast-close--loading';
       default:
         return 'rqn-toast-close--default';
     }

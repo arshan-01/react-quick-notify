@@ -1,8 +1,8 @@
 import { useToastContext } from '../components/ToastProvider';
-import { ToastType } from '../types/toast';
+import { ToastType, PromiseToastMessages } from '../types/toast';
 
 export const useToast = () => {
-  const { addToast, removeToast, clearAllToasts, toasts } = useToastContext();
+  const { addToast, removeToast, clearAllToasts, toasts, updatePromiseToast } = useToastContext();
 
   const toast = {
     success: (message: string, duration?: number) => {
@@ -39,6 +39,41 @@ export const useToast = () => {
         message,
         duration,
       });
+    },
+    promise: <T>(promise: Promise<T>, messages: PromiseToastMessages, duration?: number) => {
+      const promiseId = Math.random().toString(36).substr(2, 9);
+      
+      // Add loading toast
+      addToast({
+        type: 'loading',
+        message: messages.loading,
+        duration: 0, // Don't auto-dismiss loading toasts
+        isPromise: true,
+        promiseId,
+      });
+
+      // Handle promise resolution
+      promise
+        .then(() => {
+          updatePromiseToast(promiseId, 'success', messages.success);
+          // Auto-dismiss success toast after duration
+          if (duration && duration > 0) {
+            setTimeout(() => {
+              removeToast(promiseId);
+            }, duration);
+          }
+        })
+        .catch(() => {
+          updatePromiseToast(promiseId, 'error', messages.error);
+          // Auto-dismiss error toast after duration
+          if (duration && duration > 0) {
+            setTimeout(() => {
+              removeToast(promiseId);
+            }, duration);
+          }
+        });
+
+      return promise;
     },
     dismiss: removeToast,
     clear: clearAllToasts,

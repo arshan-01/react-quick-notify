@@ -1,4 +1,4 @@
-export type ToastType = 'success' | 'error' | 'warning' | 'info';
+export type ToastType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 
 export interface ToastConfig {
   position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
@@ -17,6 +17,14 @@ export interface Toast {
     label: string;
     onClick: () => void;
   };
+  isPromise?: boolean;
+  promiseId?: string; // For tracking promise toasts
+}
+
+export interface PromiseToastMessages {
+  loading: string;
+  success: string;
+  error: string;
 }
 
 export interface ToastContextType {
@@ -25,4 +33,5 @@ export interface ToastContextType {
   addToast: (toast: Omit<Toast, 'id'>) => void;
   removeToast: (id: string) => void;
   clearAllToasts: () => void;
+  updatePromiseToast: (promiseId: string, type: ToastType, message: string) => void;
 }

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
-import { Toast, ToastContextType, ToastConfig } from '../types/toast';
+import { Toast, ToastContextType, ToastConfig, ToastType } from '../types/toast';
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
@@ -67,12 +67,21 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     setToasts([]);
   }, []);
 
+  const updatePromiseToast = useCallback((promiseId: string, type: ToastType, message: string) => {
+    setToasts(prev => prev.map(toast => 
+      toast.promiseId === promiseId 
+        ? { ...toast, type, message }
+        : toast
+    ));
+  }, []);
+
   const value: ToastContextType = {
     toasts,
     config: defaultConfig,
     addToast,
     removeToast,
     clearAllToasts,
+    updatePromiseToast,
   };
 
   return (
