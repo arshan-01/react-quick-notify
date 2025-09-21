@@ -13,7 +13,7 @@ A beautiful, customizable toast notification system for React applications built
 - 🎪 Multiple toast types (success, error, warning, info)
 - 📍 Configurable positioning
 - ⏱️ Auto-dismiss with customizable duration
-- 🎭 Smooth enter/exit animations
+- 🎭 Smooth enter/exit animations with position-aware direction
 
 ## Installation
 
@@ -180,7 +180,7 @@ This package includes its own CSS file with all necessary styles. No external CS
 
 The package includes:
 - Responsive design that works on all screen sizes
-- Smooth animations and transitions
+- Smooth animations and transitions with position-aware direction
 - Dark mode support (automatically detects system preference)
 - Beautiful color schemes for different toast types
 - Accessible focus states and ARIA attributes
@@ -297,6 +297,17 @@ const dismissSpecific = (toastId: string) => {
 // Top left
 <ToastContainer position="top-left" />
 ```
+
+### Position-Aware Animations
+
+React Quick Notify features intelligent animations that match the toast position for a more intuitive user experience:
+
+- **Right positions** (`top-right`, `bottom-right`): Toasts slide in from the right and slide out to the right
+- **Left positions** (`top-left`, `bottom-left`): Toasts slide in from the left and slide out to the left  
+- **Top center**: Toasts slide down from the top and slide up when dismissed
+- **Bottom center**: Toasts slide up from the bottom and slide down when dismissed
+
+This creates a natural flow where toasts appear to come from their positioned direction, making the interface feel more polished and intuitive.
 
 ### Toast Order
 

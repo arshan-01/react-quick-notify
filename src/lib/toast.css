@@ -62,7 +62,7 @@
   border-style: solid;
 }
 
-/* Toast visibility states */
+/* Toast visibility states - default (right position) */
 .rqn-toast-item--visible {
   transform: translateX(0) scale(1);
   opacity: 1;
@@ -71,6 +71,48 @@
 .rqn-toast-item--leaving {
   transform: translateX(100%) scale(0.95);
   opacity: 0;
+}
+
+/* Left position animations */
+.rqn-toast-container--top-left .rqn-toast-item,
+.rqn-toast-container--bottom-left .rqn-toast-item {
+  transform: translateX(-100%) scale(0.95);
+}
+
+.rqn-toast-container--top-left .rqn-toast-item--visible,
+.rqn-toast-container--bottom-left .rqn-toast-item--visible {
+  transform: translateX(0) scale(1);
+}
+
+.rqn-toast-container--top-left .rqn-toast-item--leaving,
+.rqn-toast-container--bottom-left .rqn-toast-item--leaving {
+  transform: translateX(-100%) scale(0.95);
+}
+
+/* Top center position animations */
+.rqn-toast-container--top-center .rqn-toast-item {
+  transform: translateY(-100%) scale(0.95);
+}
+
+.rqn-toast-container--top-center .rqn-toast-item--visible {
+  transform: translateY(0) scale(1);
+}
+
+.rqn-toast-container--top-center .rqn-toast-item--leaving {
+  transform: translateY(-100%) scale(0.95);
+}
+
+/* Bottom center position animations */
+.rqn-toast-container--bottom-center .rqn-toast-item {
+  transform: translateY(100%) scale(0.95);
+}
+
+.rqn-toast-container--bottom-center .rqn-toast-item--visible {
+  transform: translateY(0) scale(1);
+}
+
+.rqn-toast-container--bottom-center .rqn-toast-item--leaving {
+  transform: translateY(100%) scale(0.95);
 }
 
 /* Toast type variations */
