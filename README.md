@@ -1,5 +1,8 @@
 # React Quick Notify
 
+[![npm version](https://img.shields.io/npm/v/react-quick-notify.svg)](https://www.npmjs.com/package/react-quick-notify)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A beautiful, customizable toast notification system for React applications built with TypeScript and Tailwind CSS.
 
 ## Features
