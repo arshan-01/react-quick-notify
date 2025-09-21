@@ -318,6 +318,45 @@
     box-sizing: border-box;
   }
   
+  /* Override animations for mobile - all toasts are centered */
+  /* Top containers (all become top-center on mobile) */
+  .rqn-toast-container--top-left .rqn-toast-item,
+  .rqn-toast-container--top-right .rqn-toast-item,
+  .rqn-toast-container--top-center .rqn-toast-item {
+    transform: translateY(-100%) scale(0.95);
+  }
+  
+  .rqn-toast-container--top-left .rqn-toast-item--visible,
+  .rqn-toast-container--top-right .rqn-toast-item--visible,
+  .rqn-toast-container--top-center .rqn-toast-item--visible {
+    transform: translateY(0) scale(1);
+  }
+  
+  .rqn-toast-container--top-left .rqn-toast-item--leaving,
+  .rqn-toast-container--top-right .rqn-toast-item--leaving,
+  .rqn-toast-container--top-center .rqn-toast-item--leaving {
+    transform: translateY(-100%) scale(0.95);
+  }
+  
+  /* Bottom containers (all become bottom-center on mobile) */
+  .rqn-toast-container--bottom-left .rqn-toast-item,
+  .rqn-toast-container--bottom-right .rqn-toast-item,
+  .rqn-toast-container--bottom-center .rqn-toast-item {
+    transform: translateY(100%) scale(0.95);
+  }
+  
+  .rqn-toast-container--bottom-left .rqn-toast-item--visible,
+  .rqn-toast-container--bottom-right .rqn-toast-item--visible,
+  .rqn-toast-container--bottom-center .rqn-toast-item--visible {
+    transform: translateY(0) scale(1);
+  }
+  
+  .rqn-toast-container--bottom-left .rqn-toast-item--leaving,
+  .rqn-toast-container--bottom-right .rqn-toast-item--leaving,
+  .rqn-toast-container--bottom-center .rqn-toast-item--leaving {
+    transform: translateY(100%) scale(0.95);
+  }
+  
   /* For very small screens (phones in portrait) */
   @media (max-width: 480px) {
     .rqn-toast-container--top-left,
