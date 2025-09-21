@@ -1,6 +1,6 @@
 {
   "name": "react-quick-notify",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "A beautiful, customizable toast notification system for React applications with zero CSS dependencies",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
