@@ -10,7 +10,7 @@ function ToastDemo({ position, onPositionChange }) {
   const [currentOrder, setCurrentOrder] = useState('reverse') // 'reverse' or 'normal'
 
   const handleSuccess = () => {
-    toast.success('Operation completed successfully! 🎉')
+    toast.success('Operation completed successfully!')
   }
 
   const handleError = () => {
