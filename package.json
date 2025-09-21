@@ -1,7 +1,7 @@
 {
   "name": "react-quick-notify",
   "version": "0.1.19",
-  "description": "A beautiful, customizable toast notification system for React applications with zero CSS dependencies",
+  "description": "react-quick-notify: A beautiful, customizable toast notification system for React applications with zero CSS dependencies",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -27,6 +27,7 @@
     "README.md"
   ],
   "keywords": [
+    "react-quick-notify",
     "react",
     "toast",
     "notifications",
@@ -34,12 +35,16 @@
     "ui",
     "components",
     "alerts",
-    "css"
+    "css",
+    "react-toast",
+    "notification-system",
+    "toast-notifications",
+    "react-notifications"
   ],
-  "author": {
-    "name": "Arshan Nawaz"
-  },
+  "author": "react-quick-notify",
   "license": "MIT",
+  "publisher": "react-quick-notify",
+  "displayName": "react-quick-notify",
   "repository": {
     "type": "git",
     "url": "https://github.com/arshan-01/react-quick-notify.git"

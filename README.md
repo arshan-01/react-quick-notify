@@ -1,9 +1,9 @@
-# React Quick Notify
+# react-quick-notify
 
 [![npm version](https://img.shields.io/npm/v/react-quick-notify.svg)](https://www.npmjs.com/package/react-quick-notify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A beautiful, customizable toast notification system for React applications built with TypeScript and Tailwind CSS.
+**react-quick-notify** - A beautiful, customizable toast notification system for React applications built with TypeScript and Tailwind CSS.
 
 ## Features
 
@@ -19,6 +19,8 @@ A beautiful, customizable toast notification system for React applications built
 - 🎭 Smooth enter/exit animations with position-aware direction
 
 ## Installation
+
+Install **react-quick-notify** from npm:
 
 ```bash
 npm install react-quick-notify
